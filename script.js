@@ -203,6 +203,22 @@ books.forEach(b => {
   b.format = Math.random() > 0.5 ? 'Hardback' : 'Digital'
 })
 
+// Return array of user-added books from localStorage
+function getAddedBooks() {
+  try {
+    const raw = localStorage.getItem('addedBooks') || '[]'
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
+  } catch (e) {
+    return []
+  }
+}
+
+// Combined view of base books + added books
+function allBooks() {
+  return [...books, ...getAddedBooks()]
+}
+
 /* RECIPES ARRAY - CURRENTLY DISABLED
 const recipes = [
   {
@@ -504,7 +520,7 @@ function createBookCard(book) {
   return el
 }
 
-function showBooks(booksToShow = books, page = 1) {
+function showBooks(booksToShow = allBooks(), page = 1) {
   if (!libraryEl) return
   lastBooksToShow = booksToShow
   currentPage = page
@@ -528,6 +544,7 @@ const sortButton = document.getElementById('sortButton') // Assuming you have bu
 const filterButton = document.getElementById('filterButton') // Assuming you have buttons with these IDs in your HTML
 const searchInput = document.getElementById('searchInput')
 const searchButton = document.getElementById('searchButton')
+const addButton = document.getElementById('addButton')
 
 // Track button states
 let sortAscending = true
@@ -535,7 +552,7 @@ let isFiltered = false
 
 if (resetButton) {
   resetButton.addEventListener('click', () => {
-    showBooks(books, 1)
+    showBooks(allBooks(), 1)
     sortAscending = true
     isFiltered = false
     if (searchInput) searchInput.value = ''
@@ -544,7 +561,7 @@ if (resetButton) {
 
 if (sortButton) {
   sortButton.addEventListener('click', () => {
-    const sorted = [...books].sort((a, b) => {
+    const sorted = [...allBooks()].sort((a, b) => {
       if (sortAscending) {
         return a.title.localeCompare(b.title)
       } else {
@@ -559,9 +576,9 @@ if (sortButton) {
 if (filterButton) {
   filterButton.addEventListener('click', () => {
     if (isFiltered) {
-      showBooks(books, 1)
+      showBooks(allBooks(), 1)
     } else {
-      const filtered = books.filter(book => book.rating >= 4.3)
+      const filtered = allBooks().filter(book => book.rating >= 4.3)
       showBooks(filtered, 1)
     }
     isFiltered = !isFiltered
@@ -588,5 +605,7 @@ function performSearch() {
 
 if (searchButton) searchButton.addEventListener('click', performSearch)
 if (searchInput) searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') performSearch() })
+
+if (addButton) addButton.addEventListener('click', () => { location.href = 'add.html' })
 
 document.addEventListener('DOMContentLoaded', () => showBooks(books, 1))

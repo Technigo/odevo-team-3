@@ -1,6 +1,8 @@
+.root-placeholder {}
+
 :root {
   --liverpool-red: #C30C30;
-  --liverpool-dark-red: #8B0000;
+  --liverpool-dark: #8B0000;
   --liverpool-gold: #F5B041;
   --liverpool-white: #ffffff;
   --liverpool-light: #f8f4f0;
@@ -9,15 +11,12 @@
 body, button {
   font-family: "Poppins", sans-serif;
   background: var(--liverpool-light);
-  color: var(--liverpool-dark-red);
+  color: var(--liverpool-dark);
 }
-button:hover {
-  background: var(--liverpool-dark-red);
-  transform: translateY(-1px);
-}
+
 .hover-green:hover {
   background: var(--liverpool-gold);
-  color: var(--liverpool-dark-red);
+  color: var(--liverpool-dark);
   border-color: var(--liverpool-gold);
 }
 .buttons {
@@ -38,7 +37,7 @@ button {
 }
 
 button:hover {
-  background: var(--liverpool-dark-red);
+  background: var(--liverpool-dark);
   transform: translateY(-1px);
 }
 
@@ -85,13 +84,13 @@ a:hover {
 
 /* Headings */
 h1, h2, h3 {
-  color: var(--liverpool-dark-red);
+  color: var(--liverpool-dark);
   font-weight: 700;
 }
 
 /* Header / hero */
 .site-header {
-  background: linear-gradient(90deg, var(--liverpool-red), var(--liverpool-dark-red));
+  background: linear-gradient(90deg, var(--liverpool-red), var(--liverpool-dark));
   color: var(--liverpool-white);
   padding: 20px;
   border-radius: 6px;

@@ -181,6 +181,7 @@ const books = [
   }
 ]
 
+/* RECIPES ARRAY - CURRENTLY DISABLED
 const recipes = [
   {
     name: 'Individual vegetarian lasagnes',
@@ -400,6 +401,7 @@ const recipes = [
     image: './recipe-images/grilled.jpg'
   }
 ]
+*/
 
 // Render books as cards in the DOM
 const libraryEl = document.getElementById('library')
@@ -431,13 +433,56 @@ function createBookCard(book) {
   return el
 }
 
-function showBooks() {
+function showBooks(booksToShow = books) {
   if (!libraryEl) return
   libraryEl.innerHTML = ''
 
-  books.forEach((book) => {
+  booksToShow.forEach((book) => {
     libraryEl.appendChild(createBookCard(book))
   })
 }
 
-document.addEventListener('DOMContentLoaded', showBooks)
+// Button functionality
+const resetButton = document.getElementById('resetButton') // Assuming you have buttons with these IDs in your HTML
+const sortButton = document.getElementById('sortButton') // Assuming you have buttons with these IDs in your HTML
+const filterButton = document.getElementById('filterButton') // Assuming you have buttons with these IDs in your HTML
+
+// Track button states
+let sortAscending = true
+let isFiltered = false
+
+if (resetButton) {
+  resetButton.addEventListener('click', () => {
+    showBooks(books)
+    sortAscending = true
+    isFiltered = false
+  })
+}
+
+if (sortButton) {
+  sortButton.addEventListener('click', () => {
+    const sorted = [...books].sort((a, b) => {
+      if (sortAscending) {
+        return a.title.localeCompare(b.title)
+      } else {
+        return b.title.localeCompare(a.title)
+      }
+    })
+    sortAscending = !sortAscending
+    showBooks(sorted)
+  })
+}
+
+if (filterButton) {
+  filterButton.addEventListener('click', () => {
+    if (isFiltered) {
+      showBooks(books)
+    } else {
+      const filtered = books.filter(book => book.rating >= 4.3)
+      showBooks(filtered)
+    }
+    isFiltered = !isFiltered
+  })
+}
+
+document.addEventListener('DOMContentLoaded', () => showBooks())

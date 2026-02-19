@@ -181,6 +181,59 @@ const books = [
   }
 ]
 
+// Render items as cards in the DOM
+const libraryEl = document.getElementById('library')
+
+function createCard(item, type) {
+  const el = document.createElement('div')
+  el.className = 'item'
+
+  const img = document.createElement('img')
+  img.src = item.image || ''
+  img.alt = (item.title || item.name) + ' cover'
+
+  const title = document.createElement('h3')
+  title.textContent = item.title || item.name
+
+  const meta = document.createElement('p')
+  meta.className = 'meta'
+  if (type === 'book') {
+    meta.textContent = `${item.author} • ${item.year} • ${item.genre} • Rating: ${item.rating}`
+  } else {
+    const time = item.totalTime == null ? 'unknown time' : `${item.totalTime} mins`
+    meta.textContent = `${item.source} • ${time}`
+  }
+
+  const desc = document.createElement('p')
+  desc.className = 'description'
+  if (type === 'book') desc.textContent = item.description || ''
+  else desc.textContent = `Ingredients: ${item.ingredients ? item.ingredients.length : 'N/A'}`
+
+  el.appendChild(title)
+  el.appendChild(meta)
+  el.appendChild(desc)
+  el.appendChild(img)
+
+  return el
+}
+
+function showAllItems() {
+  if (!libraryEl) return
+  libraryEl.innerHTML = ''
+
+  // Render books
+  books.forEach((b) => {
+    libraryEl.appendChild(createCard(b, 'book'))
+  })
+
+  // Render recipes
+  recipes.forEach((r) => {
+    libraryEl.appendChild(createCard(r, 'recipe'))
+  })
+}
+
+document.addEventListener('DOMContentLoaded', showAllItems)
+
 const recipes = [
   {
     name: 'Individual vegetarian lasagnes',

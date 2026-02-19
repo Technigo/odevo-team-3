@@ -1,5 +1,15 @@
+:root {
+  --pompey-blue: #0033A0;
+  --pompey-dark: #001C54;
+  --pompey-accent: #D7263D;
+  --pompey-white: #ffffff;
+  --pompey-muted: #f3f6fb;
+}
+
 body, button {
   font-family: "Poppins", sans-serif;
+  background: var(--pompey-muted);
+  color: var(--pompey-dark);
 }
 
 .buttons {
@@ -10,11 +20,18 @@ body, button {
 
 button {
   padding: 10px 20px;
-  border: none;
-  background: blue;
-  border-radius: 5px;
-  color: white;
+  border: 2px solid var(--pompey-blue);
+  background: var(--pompey-blue);
+  border-radius: 6px;
+  color: var(--pompey-white);
   cursor: pointer;
+  font-weight: 600;
+  transition: background .15s ease, transform .08s ease;
+}
+
+button:hover {
+  background: var(--pompey-dark);
+  transform: translateY(-1px);
 }
 
 .library {
@@ -24,16 +41,18 @@ button {
 }
 
 .library .item {
-  border: 1px solid blue;
-  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
   width: 250px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 16px;
+  background: var(--pompey-white);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 .library .item p {
-  margin: 4px;
+  margin: 6px 0;
 }
 
 .item img, .item img {
@@ -41,4 +60,37 @@ button {
   height: 200px;
   object-fit: cover;
   margin-top: auto;
+  border-radius: 8px;
+  border: 4px solid var(--pompey-blue);
+}
+
+/* Links and accents */
+a {
+  color: var(--pompey-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--pompey-accent);
+  text-decoration: underline;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: var(--pompey-dark);
+  font-weight: 700;
+}
+
+/* Header / hero */
+.site-header {
+  background: linear-gradient(90deg, var(--pompey-blue), var(--pompey-dark));
+  color: var(--pompey-white);
+  padding: 20px;
+  border-radius: 6px;
+}
+
+/* Small utility */
+.accent {
+  color: var(--pompey-accent);
+  font-weight: 700;
 }

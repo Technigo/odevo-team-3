@@ -19,9 +19,7 @@ const books = [
     description:
       'Set in the American South, this novel tackles issues of racism and injustice through the eyes of young Scout Finch.',
     image: './book-images/to-kill-a-mockingbird.jpg',
-    format: Math.random() > 0.5 ? 'hardback' : 'digital'
-  ,
-    presentation: book => `📖 ${book.format === 'hardback' ? '📕 Hardback Edition' : '💻 Digital Edition'}`
+    format: Math.random() > 0.5 ? 'Hardback' : 'Digital'
   },
   {
     title: '1984',
@@ -200,6 +198,10 @@ const books = [
     format: Math.random() > 0.5 ? 'hardback' : 'digital'
   }
 ]
+// Ensure every book has a `format` attribute with capitalized values
+books.forEach(b => {
+  b.format = Math.random() > 0.5 ? 'Hardback' : 'Digital'
+})
 
 /* RECIPES ARRAY - CURRENTLY DISABLED
 const recipes = [
@@ -426,6 +428,55 @@ const recipes = [
 // Render books as cards in the DOM
 const libraryEl = document.getElementById('library')
 
+// Pagination state
+const itemsPerPage = 3
+let currentPage = 1
+let lastBooksToShow = books
+
+function renderPaginationControls(totalPages) {
+  // remove existing
+  let existing = document.getElementById('pagination')
+  if (existing) existing.remove()
+
+  const wrapper = document.createElement('div')
+  wrapper.id = 'pagination'
+  wrapper.style.display = 'flex'
+  wrapper.style.gap = '8px'
+  wrapper.style.alignItems = 'center'
+  wrapper.style.marginTop = '16px'
+
+  const prev = document.createElement('button')
+  prev.textContent = 'Prev'
+  prev.type = 'button'
+  prev.disabled = currentPage <= 1
+  prev.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage -= 1
+      showBooks(lastBooksToShow, currentPage)
+    }
+  })
+
+  const indicator = document.createElement('span')
+  indicator.textContent = `Page ${currentPage} of ${totalPages}`
+
+  const next = document.createElement('button')
+  next.textContent = 'Next'
+  next.type = 'button'
+  next.disabled = currentPage >= totalPages
+  next.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage += 1
+      showBooks(lastBooksToShow, currentPage)
+    }
+  })
+
+  wrapper.appendChild(prev)
+  wrapper.appendChild(indicator)
+  wrapper.appendChild(next)
+
+  libraryEl.parentNode.insertBefore(wrapper, libraryEl.nextSibling)
+}
+
 function createBookCard(book) {
   const el = document.createElement('div')
   el.className = 'item'
@@ -435,7 +486,7 @@ function createBookCard(book) {
 
   const meta = document.createElement('p')
   meta.className = 'meta'
-  meta.textContent = `${book.author} • ${book.year} • ${book.genre} • Rating: ${book.rating}`
+  meta.textContent = `${book.author} • ${book.year} • ${book.genre} • Rating: ${book.rating} • ${book.format}`
 
   const desc = document.createElement('p')
   desc.className = 'description'
@@ -453,19 +504,30 @@ function createBookCard(book) {
   return el
 }
 
-function showBooks(booksToShow = books) {
+function showBooks(booksToShow = books, page = 1) {
   if (!libraryEl) return
+  lastBooksToShow = booksToShow
+  currentPage = page
   libraryEl.innerHTML = ''
 
-  booksToShow.forEach((book) => {
+  const totalPages = Math.max(1, Math.ceil(booksToShow.length / itemsPerPage))
+  const start = (page - 1) * itemsPerPage
+  const end = start + itemsPerPage
+  const pageItems = booksToShow.slice(start, end)
+
+  pageItems.forEach((book) => {
     libraryEl.appendChild(createBookCard(book))
   })
+
+  renderPaginationControls(totalPages)
 }
 
 // Button functionality
 const resetButton = document.getElementById('resetButton') // Assuming you have buttons with these IDs in your HTML
 const sortButton = document.getElementById('sortButton') // Assuming you have buttons with these IDs in your HTML
 const filterButton = document.getElementById('filterButton') // Assuming you have buttons with these IDs in your HTML
+const searchInput = document.getElementById('searchInput')
+const searchButton = document.getElementById('searchButton')
 
 // Track button states
 let sortAscending = true
@@ -473,9 +535,10 @@ let isFiltered = false
 
 if (resetButton) {
   resetButton.addEventListener('click', () => {
-    showBooks(books)
+    showBooks(books, 1)
     sortAscending = true
     isFiltered = false
+    if (searchInput) searchInput.value = ''
   })
 }
 
@@ -489,20 +552,41 @@ if (sortButton) {
       }
     })
     sortAscending = !sortAscending
-    showBooks(sorted)
+    showBooks(sorted, 1)
   })
 }
 
 if (filterButton) {
   filterButton.addEventListener('click', () => {
     if (isFiltered) {
-      showBooks(books)
+      showBooks(books, 1)
     } else {
       const filtered = books.filter(book => book.rating >= 4.3)
-      showBooks(filtered)
+      showBooks(filtered, 1)
     }
     isFiltered = !isFiltered
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => showBooks())
+function performSearch() {
+  const q = (searchInput && searchInput.value || '').trim().toLowerCase()
+  if (!q) {
+    showBooks(books, 1)
+    isFiltered = false
+    return
+  }
+
+  const filtered = books.filter(b => {
+    const titleMatch = b.title && b.title.toLowerCase().includes(q)
+    const formatMatch = b.format && b.format.toLowerCase().includes(q)
+    return titleMatch || formatMatch
+  })
+
+  showBooks(filtered, 1)
+  isFiltered = true
+}
+
+if (searchButton) searchButton.addEventListener('click', performSearch)
+if (searchInput) searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') performSearch() })
+
+document.addEventListener('DOMContentLoaded', () => showBooks(books, 1))

@@ -1,5 +1,15 @@
+:root {
+  --liverpool-red: #C30C30;
+  --liverpool-dark-red: #8B0000;
+  --liverpool-gold: #F5B041;
+  --liverpool-white: #ffffff;
+  --liverpool-light: #f8f4f0;
+}
+
 body, button {
   font-family: "Poppins", sans-serif;
+  background: var(--liverpool-light);
+  color: var(--liverpool-dark-red);
 }
 
 .buttons {
@@ -10,11 +20,18 @@ body, button {
 
 button {
   padding: 10px 20px;
-  border: none;
-  background: blue;
-  border-radius: 5px;
-  color: white;
+  border: 2px solid var(--liverpool-red);
+  background: var(--liverpool-red);
+  border-radius: 6px;
+  color: var(--liverpool-white);
   cursor: pointer;
+  font-weight: 600;
+  transition: background .15s ease, transform .08s ease;
+}
+
+button:hover {
+  background: var(--liverpool-dark-red);
+  transform: translateY(-1px);
 }
 
 .library {
@@ -24,16 +41,18 @@ button {
 }
 
 .library .item {
-  border: 1px solid blue;
-  border-radius: 20px;
+  border: 1px solid rgba(195,12,48,0.15);
+  border-radius: 12px;
   width: 250px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 16px;
+  background: var(--liverpool-white);
+  box-shadow: 0 6px 18px rgba(139,0,0,0.08);
 }
 
 .library .item p {
-  margin: 4px;
+  margin: 6px 0;
 }
 
 .item img, .item img {
@@ -41,4 +60,38 @@ button {
   height: 200px;
   object-fit: cover;
   margin-top: auto;
+  border-radius: 8px;
+  border: 4px solid var(--liverpool-red);
+}
+
+/* Links and accents */
+a {
+  color: var(--liverpool-red);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--liverpool-gold);
+  text-decoration: underline;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: var(--liverpool-dark-red);
+  font-weight: 700;
+}
+
+/* Header / hero */
+.site-header {
+  background: linear-gradient(90deg, var(--liverpool-red), var(--liverpool-dark-red));
+  color: var(--liverpool-white);
+  padding: 20px;
+  border-radius: 6px;
+  border-top: 4px solid var(--liverpool-gold);
+}
+
+/* Small utility */
+.accent {
+  color: var(--liverpool-gold);
+  font-weight: 700;
 }

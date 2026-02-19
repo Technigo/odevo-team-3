@@ -11,7 +11,15 @@ body, button {
   background: var(--liverpool-light);
   color: var(--liverpool-dark-red);
 }
-
+button:hover {
+  background: var(--liverpool-dark-red);
+  transform: translateY(-1px);
+}
+.hover-green:hover {
+  background: var(--liverpool-gold);
+  color: var(--liverpool-dark-red);
+  border-color: var(--liverpool-gold);
+}
 .buttons {
   display: flex;
   gap: 10px;

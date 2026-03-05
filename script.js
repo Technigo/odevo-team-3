@@ -7,7 +7,8 @@ const books = [
     rating: 4.2,
     description:
       'A classic novel set in the Roaring Twenties, it explores themes of wealth, love, and the American Dream through the enigmatic Jay Gatsby.',
-    image: './books-images/the-great-gatsby.jpg'
+    image: './book-images/the-great-gatsby.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'To Kill a Mockingbird',
@@ -17,7 +18,8 @@ const books = [
     rating: 4.5,
     description:
       'Set in the American South, this novel tackles issues of racism and injustice through the eyes of young Scout Finch.',
-    image: './books-images/to-kill-a-mockingbird.jpg'
+    image: './book-images/to-kill-a-mockingbird.jpg',
+    format: Math.random() > 0.5 ? 'Hardback' : 'Digital'
   },
   {
     title: '1984',
@@ -27,7 +29,8 @@ const books = [
     rating: 4.4,
     description:
       'A dystopian classic that explores totalitarianism and the consequences of a surveillance state in a bleak future.',
-    image: './books-images/1984.jpg'
+    image: './book-images/1984.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'Pride and Prejudice',
@@ -37,7 +40,8 @@ const books = [
     rating: 4.25,
     description:
       'A timeless romance novel that examines societal expectations and the misunderstandings that can arise from pride and prejudice.',
-    image: './books-images/pride-and-prejudice.jpg'
+    image: './book-images/pride-and-prejudice.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Catcher in the Rye',
@@ -47,7 +51,8 @@ const books = [
     rating: 4,
     description:
       'Narrated by the teenage Holden Caulfield, the novel explores themes of alienation and the search for authenticity.',
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Hobbit',
@@ -57,7 +62,8 @@ const books = [
     rating: 4.6,
     description:
       'A fantasy adventure novel that follows Bilbo Baggins on a quest to help a group of dwarves reclaim their homeland from a dragon.',
-    image: './books-images/the-hobbit.jpg'
+    image: './book-images/the-hobbit.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: "Harry Potter and the Sorcerer's Stone",
@@ -67,7 +73,8 @@ const books = [
     rating: 4.7,
     description:
       'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
-    image: "./books-images/harry-potter-and-the-sorcerer.jpg"
+    image: "./book-images/harry-potter-and-the-sorcerer.jpg",
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'Moby-Dick',
@@ -77,7 +84,8 @@ const books = [
     rating: 4.1,
     description:
       'An epic tale of obsession, revenge, and the relentless pursuit of the great white whale, Moby Dick.',
-    image: './books-images/moby-dick.jpg'
+    image: './book-images/moby-dick.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Lord of the Rings: The Fellowship of the Ring',
@@ -87,7 +95,8 @@ const books = [
     rating: 4.55,
     description:
       'The first volume of the epic fantasy trilogy follows Frodo Baggins and the Fellowship on their quest to destroy the One Ring.',
-    image: './books-images/the-lord-of-the-rings.jpg'
+    image: './book-images/the-lord-of-the-rings.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Shining',
@@ -97,7 +106,8 @@ const books = [
     rating: 4.3,
     description:
       "A psychological horror novel that tells the story of the Torrance family's terrifying experiences at the haunted Overlook Hotel.",
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Chronicles of Narnia: The Lion, the Witch and the Wardrobe',
@@ -107,7 +117,8 @@ const books = [
     rating: 4.15,
     description:
       'The first book in the Chronicles of Narnia series, it follows the adventures of children who discover the magical land of Narnia.',
-    image: './books-images/the-chronicles-of-narnia.jpg'
+    image: './book-images/the-chronicles-of-narnia.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Da Vinci Code',
@@ -117,7 +128,8 @@ const books = [
     rating: 3.8,
     description:
       'A gripping mystery thriller that follows Harvard symbologist Robert Langdon as he unravels the secrets of the Da Vinci Code.',
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Alchemist',
@@ -127,7 +139,8 @@ const books = [
     rating: 4.25,
     description:
       'A philosophical novel that tells the story of Santiago, a shepherd boy, on his quest to discover his personal legend.',
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Hunger Games',
@@ -137,7 +150,8 @@ const books = [
     rating: 4.3,
     description:
       "In a dystopian future, Katniss Everdeen becomes a symbol of rebellion when she volunteers to take her sister's place in the brutal Hunger Games.",
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Girl with the Dragon Tattoo',
@@ -147,7 +161,8 @@ const books = [
     rating: 4.1,
     description:
       'A gripping mystery novel featuring investigative journalist Mikael Blomkvist and the enigmatic hacker Lisbeth Salander.',
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Road',
@@ -157,7 +172,8 @@ const books = [
     rating: 4,
     description:
       "Set in a post-apocalyptic world, it follows a father and son's harrowing journey to survive and find safety.",
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: "The Hitchhiker's Guide to the Galaxy",
@@ -167,7 +183,8 @@ const books = [
     rating: 4.35,
     description:
       "A comedic science fiction series that follows the misadventures of Arthur Dent after Earth's destruction.",
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   },
   {
     title: 'The Giver',
@@ -177,10 +194,32 @@ const books = [
     rating: 4.12,
     description:
       'A dystopian novel set in a seemingly perfect society where young Jonas discovers the dark truth beneath the surface.',
-    image: './books-images/unknown.jpg'
+    image: './book-images/unknown.jpg',
+    format: Math.random() > 0.5 ? 'hardback' : 'digital'
   }
 ]
+// Ensure every book has a `format` attribute with capitalized values
+books.forEach(b => {
+  b.format = Math.random() > 0.5 ? 'Hardback' : 'Digital'
+})
 
+// Return array of user-added books from localStorage
+function getAddedBooks() {
+  try {
+    const raw = localStorage.getItem('addedBooks') || '[]'
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
+  } catch (e) {
+    return []
+  }
+}
+
+// Combined view of base books + added books
+function allBooks() {
+  return [...books, ...getAddedBooks()]
+}
+
+/* RECIPES ARRAY - CURRENTLY DISABLED
 const recipes = [
   {
     name: 'Individual vegetarian lasagnes',
@@ -400,3 +439,173 @@ const recipes = [
     image: './recipe-images/grilled.jpg'
   }
 ]
+*/
+
+// Render books as cards in the DOM
+const libraryEl = document.getElementById('library')
+
+// Pagination state
+const itemsPerPage = 3
+let currentPage = 1
+let lastBooksToShow = books
+
+function renderPaginationControls(totalPages) {
+  // remove existing
+  let existing = document.getElementById('pagination')
+  if (existing) existing.remove()
+
+  const wrapper = document.createElement('div')
+  wrapper.id = 'pagination'
+  wrapper.style.display = 'flex'
+  wrapper.style.gap = '8px'
+  wrapper.style.alignItems = 'center'
+  wrapper.style.marginTop = '16px'
+
+  const prev = document.createElement('button')
+  prev.textContent = 'Prev'
+  prev.type = 'button'
+  prev.disabled = currentPage <= 1
+  prev.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage -= 1
+      showBooks(lastBooksToShow, currentPage)
+    }
+  })
+
+  const indicator = document.createElement('span')
+  indicator.textContent = `Page ${currentPage} of ${totalPages}`
+
+  const next = document.createElement('button')
+  next.textContent = 'Next'
+  next.type = 'button'
+  next.disabled = currentPage >= totalPages
+  next.addEventListener('click', () => {
+    if (currentPage < totalPages) {
+      currentPage += 1
+      showBooks(lastBooksToShow, currentPage)
+    }
+  })
+
+  wrapper.appendChild(prev)
+  wrapper.appendChild(indicator)
+  wrapper.appendChild(next)
+
+  libraryEl.parentNode.insertBefore(wrapper, libraryEl.nextSibling)
+}
+
+function createBookCard(book) {
+  const el = document.createElement('div')
+  el.className = 'item'
+
+  const title = document.createElement('h3')
+  title.textContent = book.title
+
+  const meta = document.createElement('p')
+  meta.className = 'meta'
+  meta.textContent = `${book.author} • ${book.year} • ${book.genre} • Rating: ${book.rating} • ${book.format}`
+
+  const desc = document.createElement('p')
+  desc.className = 'description'
+  desc.textContent = book.description || ''
+
+  const img = document.createElement('img')
+  img.src = book.image || ''
+  img.alt = book.title + ' cover'
+
+  el.appendChild(title)
+  el.appendChild(meta)
+  el.appendChild(desc)
+  el.appendChild(img)
+
+  return el
+}
+
+function showBooks(booksToShow = allBooks(), page = 1) {
+  if (!libraryEl) return
+  lastBooksToShow = booksToShow
+  currentPage = page
+  libraryEl.innerHTML = ''
+
+  const totalPages = Math.max(1, Math.ceil(booksToShow.length / itemsPerPage))
+  const start = (page - 1) * itemsPerPage
+  const end = start + itemsPerPage
+  const pageItems = booksToShow.slice(start, end)
+
+  pageItems.forEach((book) => {
+    libraryEl.appendChild(createBookCard(book))
+  })
+
+  renderPaginationControls(totalPages)
+}
+
+// Button functionality
+const resetButton = document.getElementById('resetButton') // Assuming you have buttons with these IDs in your HTML
+const sortButton = document.getElementById('sortButton') // Assuming you have buttons with these IDs in your HTML
+const filterButton = document.getElementById('filterButton') // Assuming you have buttons with these IDs in your HTML
+const searchInput = document.getElementById('searchInput')
+const searchButton = document.getElementById('searchButton')
+const addButton = document.getElementById('addButton')
+
+// Track button states
+let sortAscending = true
+let isFiltered = false
+
+if (resetButton) {
+  resetButton.addEventListener('click', () => {
+    showBooks(allBooks(), 1)
+    sortAscending = true
+    isFiltered = false
+    if (searchInput) searchInput.value = ''
+  })
+}
+
+if (sortButton) {
+  sortButton.addEventListener('click', () => {
+    const sorted = [...allBooks()].sort((a, b) => {
+      if (sortAscending) {
+        return a.title.localeCompare(b.title)
+      } else {
+        return b.title.localeCompare(a.title)
+      }
+    })
+    sortAscending = !sortAscending
+    showBooks(sorted, 1)
+  })
+}
+
+if (filterButton) {
+  filterButton.addEventListener('click', () => {
+    if (isFiltered) {
+      showBooks(allBooks(), 1)
+    } else {
+      const filtered = allBooks().filter(book => book.rating >= 4.3)
+      showBooks(filtered, 1)
+    }
+    isFiltered = !isFiltered
+  })
+}
+
+function performSearch() {
+  const q = (searchInput && searchInput.value || '').trim().toLowerCase()
+  if (!q) {
+    showBooks(books, 1)
+    isFiltered = false
+    return
+  }
+
+  const filtered = books.filter(b => {
+    const titleMatch = b.title && b.title.toLowerCase().includes(q)
+    const formatMatch = b.format && b.format.toLowerCase().includes(q)
+    return titleMatch || formatMatch
+  })
+
+  showBooks(filtered, 1)
+  isFiltered = true
+}
+
+if (searchButton) searchButton.addEventListener('click', performSearch)
+if (searchInput) searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') performSearch() })
+
+if (addButton) addButton.addEventListener('click', () => { location.href = 'add.html' })
+
+document.addEventListener('DOMContentLoaded', () => showBooks(books, 1))
